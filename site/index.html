@@ -69,6 +69,7 @@
     h1, h2, h3 { margin: 0; }
     h1 { max-width: 850px; margin-top: 22px; font: 400 clamp(3.3rem, 7vw, 7rem)/.94 Georgia, serif; letter-spacing: -.055em; }
     .tagline { margin: 24px 0 0; color: var(--accent); font: italic 400 clamp(1.3rem, 2vw, 1.8rem)/1.35 Georgia, serif; }
+    html[lang="zh"] .tagline { font-style: normal; }
     .intro { max-width: 760px; margin: 24px 0 0; color: var(--muted); font-size: 1.08rem; line-height: 1.8; }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
     .action { display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 16px; border: 1px solid var(--accent); text-decoration: none; font: 650 .78rem/1 "Consolas", monospace; letter-spacing: .04em; }
@@ -113,12 +114,12 @@
         <span><strong>RecAgent</strong></span>
       </a>
       <nav class="nav" aria-label="Project navigation">
-        <a href="#loop" data-en="Agent Loop" data-zh="Agent 闭环">Agent Loop</a>
-        <a href="#principles" data-en="Principles" data-zh="设计原则">Principles</a>
+        <a href="#principles" data-en="First Principle" data-zh="First Principle">First Principle</a>
+        <a href="#loop" data-en="Agent Loop" data-zh="Agent Loop">Agent Loop</a>
       </nav>
       <div class="controls">
         <button class="control" type="button" data-language>中 / EN</button>
-        <button class="control" type="button" data-theme aria-label="Toggle color theme">◐</button>
+        <button class="control" type="button" data-theme-toggle aria-label="Toggle color theme">◐</button>
       </div>
     </div>
   </header>
@@ -137,10 +138,35 @@
       </div>
     </section>
 
+    <section class="section" id="principles">
+      <div class="section-head">
+        <div>
+          <h2 data-en="First Principle" data-zh="First Principle">First Principle</h2>
+          <p data-en="The Agent is only as useful as the boundaries around it are clear." data-zh="Agent 的价值，取决于它周围的边界是否足够清晰。">The Agent is only as useful as the boundaries around it are clear.</p>
+        </div>
+      </div>
+      <div class="principles">
+        <article>
+          <span>01</span>
+          <h3 data-en="Protect the user" data-zh="保护用户">Protect the user</h3>
+          <p data-en="Engagement cannot override long-term value and well-being." data-zh="互动指标不能凌驾于长期用户价值与福祉之上。">Engagement cannot override long-term value and well-being.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3 data-en="Design for the ecosystem" data-zh="面向生态">Design for the ecosystem</h3>
+          <p data-en="Recommendations must respect creators, supply, and diversity." data-zh="推荐结果必须尊重创作者、供给与多样性。">Recommendations must respect creators, supply, and diversity.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3 data-en="Keep feedback visible" data-zh="反馈可观察">Keep feedback visible</h3>
+          <p data-en="Exploration and feedback loops remain inspectable." data-zh="探索与反馈回路始终可检查、可解释。">Exploration and feedback loops remain inspectable.</p>
+        </article></div>
+    </section>
+
     <section class="section" id="loop">
       <div class="section-head">
         <div>
-          <h2 data-en="One loop. Six layers." data-zh="一个闭环，六个层次。">One loop. Six layers.</h2>
+          <h2 data-en="Agent Loop" data-zh="Agent Loop">Agent Loop</h2>
           <p data-en="From raw signals to measurable behavior, each layer contributes a distinct part of the Agent system." data-zh="从原始信号到可衡量行为，每一层都承担 Agent 系统中不可替代的一部分。">From raw signals to measurable behavior, each layer contributes a distinct part of the Agent system.</p>
         </div>
       </div>
@@ -176,38 +202,13 @@
           <p data-en="Relevance, diversity, retention, ecosystem health." data-zh="相关性、多样性、留存与生态健康。">Relevance, diversity, retention, ecosystem health.</p>
         </article></div>
     </section>
-
-    <section class="section" id="principles">
-      <div class="section-head">
-        <div>
-          <h2 data-en="Built to stay trustworthy." data-zh="可靠，是设计出来的。">Built to stay trustworthy.</h2>
-          <p data-en="The Agent is only as useful as the boundaries around it are clear." data-zh="Agent 的价值，取决于它周围的边界是否足够清晰。">The Agent is only as useful as the boundaries around it are clear.</p>
-        </div>
-      </div>
-      <div class="principles">
-        <article>
-          <span>01</span>
-          <h3 data-en="Protect the user" data-zh="保护用户">Protect the user</h3>
-          <p data-en="Engagement cannot override long-term value and well-being." data-zh="互动指标不能凌驾于长期用户价值与福祉之上。">Engagement cannot override long-term value and well-being.</p>
-        </article>
-        <article>
-          <span>02</span>
-          <h3 data-en="Design for the ecosystem" data-zh="面向生态">Design for the ecosystem</h3>
-          <p data-en="Recommendations must respect creators, supply, and diversity." data-zh="推荐结果必须尊重创作者、供给与多样性。">Recommendations must respect creators, supply, and diversity.</p>
-        </article>
-        <article>
-          <span>03</span>
-          <h3 data-en="Keep feedback visible" data-zh="反馈可观察">Keep feedback visible</h3>
-          <p data-en="Exploration and feedback loops remain inspectable." data-zh="探索与反馈回路始终可检查、可解释。">Exploration and feedback loops remain inspectable.</p>
-        </article></div>
-    </section>
   </main>
 
   <script>
     (() => {
       const root = document.documentElement;
       const languageButton = document.querySelector("[data-language]");
-      const themeButton = document.querySelector("[data-theme]");
+      const themeButton = document.querySelector("[data-theme-toggle]");
       const translatable = [...document.querySelectorAll("[data-en][data-zh]")];
       let language = root.lang === "zh" ? "zh" : "en";
       function applyLanguage() {
