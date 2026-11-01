@@ -6,8 +6,6 @@ RecAgent balances immediate relevance with diversity, freshness, creator supply,
 
 面向推荐系统的 Agent：在相关性、多样性、新鲜度、生态健康与长期用户价值之间做动态权衡。
 
-**Status:** Project scaffold · [Portfolio](https://0x0addc001.github.io/#use-cases)
-
 ## Agent loop
 
 | Stage | Responsibility |
